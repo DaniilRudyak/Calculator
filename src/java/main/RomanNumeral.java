@@ -8,7 +8,7 @@ public class RomanNumeral {
 
     private String number;
     private Integer value;
-    private Map<String, Integer> roma_num = new HashMap<String, Integer>() {{
+    private static Map<String, Integer> roma_num = new HashMap<String, Integer>() {{
         put("I", Integer.valueOf(1));
         put("V", Integer.valueOf(5));
         put("X", Integer.valueOf(10));
@@ -17,7 +17,8 @@ public class RomanNumeral {
         put("D", Integer.valueOf(500));
         put("M", Integer.valueOf(1000));
     }};
-    private List<Pair<Integer, String>> convertToRom = Arrays.asList(
+    private static String[] basic = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
+    private static List<Pair<Integer, String>> convertToRom = Arrays.asList(
             new Pair<Integer, String>(new Integer(1), "I"),
             new Pair<Integer, String>(new Integer(5), "V"),
             new Pair<Integer, String>(new Integer(10), "X"),
@@ -47,54 +48,41 @@ public class RomanNumeral {
         String str;
         int curValue;
         int copyValue = value;
-        // Выделяем тысячи
+
         a.append(M(copyValue));
-        // then что осталось после тысяч
         copyValue = copyValue % 1000;
 
 
-        // Выделяем пятьсот из остатка от тысячи
         str = D(copyValue);
-        // остаток после выделения полтысячи
+        a.append(str);
         if (str.equals("CM"))
             copyValue -= 900;
         else if (!str.equals(""))
             copyValue -= 500;
-        a.append(str);
 
-
-        // Выделяем сотни из остатка
         str = C(copyValue);
         a.append(str);
-        // остаток из сотен
         if (str.equals("CD"))
             copyValue -= 400;
         else if (!str.equals(""))
             copyValue -= 100;
 
-
-        // Выделяем полсотни
         str = L(copyValue);
         a.append(str);
-
-        // остаток
         if (str.equals("XC"))
             copyValue -= 90;
         else if (!str.equals(""))
             copyValue -= 50;
 
-
-        // Выделяем десятки
         str = X(copyValue);
         a.append(str);
-        // остаток
         if (str.equals("XL"))
             copyValue -= 40;
         else if (!str.equals(""))
             copyValue -= 10;
 
-        // Выделяем then что осталось
-        a.append(basic(copyValue));
+
+        a.append(basic[copyValue]);
         return new RomanNumeral(a.toString());
     }
 
@@ -150,22 +138,6 @@ public class RomanNumeral {
         } else return "";
     }
 
-
-    private static String basic(int value) {
-        String[] a = {
-                "",
-                "I",
-                "II",
-                "III",
-                "IV",
-                "V",
-                "VI",
-                "VII",
-                "VIII",
-                "IX"
-        };
-        return a[value];
-    }
 
     public String getNumber() {
         return number;

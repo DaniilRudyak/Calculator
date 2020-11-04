@@ -14,7 +14,7 @@ public class Calculator {
         int answer;
         int index_operation = 0;
         StringBuffer str = new StringBuffer();
-        exp.replace(" ", "");
+        exp=exp.replace(" ", "");
 
         for (String ar : arab) {
             if (exp.contains(ar)) {

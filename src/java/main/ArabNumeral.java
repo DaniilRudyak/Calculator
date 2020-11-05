@@ -1,7 +1,6 @@
 package main;
 
 public class ArabNumeral {
-
     private Integer number;
 
     ArabNumeral(String str) {

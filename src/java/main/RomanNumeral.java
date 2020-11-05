@@ -65,7 +65,7 @@ public class RomanNumeral {
         if (str.equals("CD"))
             copyValue -= 400;
         else if (!str.equals(""))
-            copyValue -= 100;
+            copyValue %= 100;
 
         str = L(copyValue);
         a.append(str);
@@ -79,7 +79,7 @@ public class RomanNumeral {
         if (str.equals("XL"))
             copyValue -= 40;
         else if (!str.equals(""))
-            copyValue -= 10;
+            copyValue %= 10;
 
 
         a.append(basic[copyValue]);

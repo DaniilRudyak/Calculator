@@ -1,4 +1,4 @@
-package main;
+package main.format.number;
 
 import javafx.util.Pair;
 
@@ -39,11 +39,11 @@ public class RomanNumeral {
         }
     }
 
-    static int convertRomanNumToArab(String str) {
+    public static int convertRomanNumToArab(String str) {
         return new RomanNumeral(str).value.intValue();
     }
 
-    static RomanNumeral convertArabNumToRoman(int value) {
+    public static RomanNumeral convertArabNumToRoman(int value) {
         StringBuffer a = new StringBuffer("");
         String str;
         int curValue;

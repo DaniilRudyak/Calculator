@@ -1,4 +1,4 @@
-package main;
+package main.format.number;
 
 public class ArabNumeral {
     private Integer number;
@@ -11,7 +11,7 @@ public class ArabNumeral {
         number = num;
     }
 
-    static int convertStrToArabNum(String str){
+    public static int convertStrToArabNum(String str){
         return new ArabNumeral(str).number.intValue();
     }
     public Integer getNumber() {
